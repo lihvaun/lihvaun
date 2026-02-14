@@ -415,42 +415,7 @@
       cursor: pointer;
     }
 
-    .tapToEnable{
-      position: fixed;
-      inset: 0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 50;
-      padding: 18px;
-    }
-    .tapBox{
-      width: min(520px, 100%);
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(15,20,28,.70);
-      box-shadow: 0 22px 80px rgba(0,0,0,.65);
-      padding: 18px;
-      text-align:left;
-    }
-    .tapBox h2{ margin:0 0 6px; font-size: 18px; }
-    .tapBox p{ margin:0 0 12px; color: rgba(244,247,255,.78); }
-    .tapBox .big{
-      width:100%;
-      height:46px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.10);
-      color: var(--text);
-      font-weight: 900;
-      letter-spacing:.02em;
-      cursor:pointer;
-    }
-
-    @keyframes popIn{
+@keyframes popIn{
       0%   { opacity: 0; transform: translateY(16px) scale(.96); filter: blur(2px); }
       60%  { opacity: 1; transform: translateY(-2px) scale(1.01); filter: blur(0); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -561,16 +526,7 @@
     </div>
   </div>
 
-  <!-- Autoplay prompt (only shows if autoplay is blocked) -->
-  <div class="tapToEnable" id="tapToEnable">
-    <div class="tapBox">
-      <h2>Enable audio</h2>
-      <p>Your browser blocked autoplay. Tap once to start the music.</p>
-      <button class="big" id="enableBtn">Tap to Play</button>
-    </div>
-  </div>
-
-  <!-- AUDIO: Replace music.mp3 with your file or URL -->
+<!-- AUDIO: Replace music.mp3 with your file or URL -->
   <audio id="audio" src="music.mp3" preload="auto" loop></audio>
 
   <script>
@@ -587,9 +543,7 @@
     const seek = document.getElementById("seek");
     const cur = document.getElementById("cur");
     const dur = document.getElementById("dur");
-    const tapToEnable = document.getElementById("tapToEnable");
-    const enableBtn = document.getElementById("enableBtn");
-    const back10 = document.getElementById("back10");
+const back10 = document.getElementById("back10");
     const fwd10 = document.getElementById("fwd10");
 
     let seeking = false;
@@ -635,8 +589,7 @@
         if (audio.paused) await audio.play();
         else audio.pause();
       }catch(e){
-        tapToEnable.style.display = "flex";
-      }
+        }
     });
 
     back10.addEventListener("click", ()=>{
@@ -645,12 +598,7 @@
     fwd10.addEventListener("click", ()=>{
       audio.currentTime = Math.min(audio.duration || (audio.currentTime + 10), audio.currentTime + 10);
     });
-
-    enableBtn.addEventListener("click", async ()=>{
-      try{
-        await audio.play();
-        tapToEnable.style.display = "none";
-      }catch(e){
+}catch(e){
         // If it still fails, user can click play again.
       }
     });
@@ -660,8 +608,7 @@
       try{
         await audio.play();
       }catch(e){
-        tapToEnable.style.display = "flex";
-      }
+        }
       updateTimes();
     })();
   </script>
