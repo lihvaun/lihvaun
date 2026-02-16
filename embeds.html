@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>vzxzvaun — Live & Media</title>
+
+<style>
+:root{
+  --text:#f4f7ff;
+  --muted:rgba(244,247,255,.75);
+  --stroke:rgba(255,255,255,.12);
+}
+
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui;
+  background:
+  radial-gradient(1200px 800px at 20% 10%, rgba(145,71,255,.14), transparent 55%),
+  radial-gradient(1000px 700px at 80% 20%, rgba(83,252,24,.10), transparent 55%),
+  linear-gradient(180deg,#070a10,#0a0f18);
+  color:var(--text);
+}
+
+.wrap{
+  width:min(1200px,95%);
+  margin:80px auto;
+}
+
+h1{
+  margin:0 0 50px;
+  font-size:36px;
+  letter-spacing:.06em;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+}
+
+.card{
+  border-radius:24px;
+  padding:22px;
+  background:rgba(15,20,30,.7);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--stroke);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:14px;
+  font-size:12px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.embed{
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--stroke);
+  min-height:400px;
+}
+
+iframe{
+  width:100%;
+  height:480px;
+  border:0;
+}
+
+.back{
+  margin-top:60px;
+  display:inline-block;
+  text-decoration:none;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background:rgba(0,0,0,.25);
+  color:var(--text);
+  letter-spacing:.12em;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<h1>Live & Media</h1>
+
+<div class="grid">
+
+  <!-- TWITCH -->
+  <div class="card">
+    <div class="header">
+      <div>Twitch — @vzxzvaun</div>
+      <div>Live</div>
+    </div>
+    <div id="twitch-player" class="embed"></div>
+  </div>
+
+  <!-- KICK -->
+  <div class="card">
+    <div class="header">
+      <div>Kick — @vzxz</div>
+      <div style="color:#53FC18;">Live</div>
+    </div>
+    <div class="embed">
+      <iframe src="https://player.kick.com/vzxz" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- SOUNDCLOUD OFFICIAL -->
+  <div class="card">
+    <div class="header">
+      <div>SoundCloud — @lihvaun</div>
+      <div style="color:#FF5500;">Official</div>
+    </div>
+    <div class="embed">
+      <iframe
+        scrolling="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lihvaun&color=%23ff5500&visual=true">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- SOUNDCLOUD ARCHIVE -->
+  <div class="card">
+    <div class="header">
+      <div>SoundCloud — @babyvaun</div>
+      <div style="color:#FF5500;">Old / Archive</div>
+    </div>
+    <div class="embed">
+      <iframe
+        scrolling="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/babyvaun&color=%23ff5500&visual=true">
+      </iframe>
+    </div>
+  </div>
+
+</div>
+
+<a href="index.html" class="back">← Back to Links</a>
+
+</div>
+
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<script>
+var options = {
+  width:"100%",
+  height:480,
+  channel:"vzxzvaun",
+  autoplay:false,
+  muted:false,
+  parent:["lihvaun.github.io"]
+};
+
+var player = new Twitch.Player("twitch-player", options);
+player.setVolume(0.5);
+</script>
+
+</body>
+</html>
